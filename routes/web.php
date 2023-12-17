@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,5 +36,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::group(['prefix'=>'admin','middlware'=>'redirectAdmin'],function(){
+    Route::get('login',[AdminAuthContoller::class,'showLoginForm'])->name('admin.login');
+    Route::post('login',[AdminAuthContoller::class,'login'])->name('admin.login.post');
+    Route::get('login',[AdminAuthContoller::class,'logout'])->name('admin.logout');
+});
+
+Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
+     Route::get('/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+});
+    
 
 require __DIR__.'/auth.php';
