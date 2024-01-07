@@ -1,3 +1,7 @@
+<script setup>
+import { Link } from '@inertiajs/vue3';
+
+</script>
 <template>
      <!-- Sidebar -->
      <aside
@@ -38,8 +42,8 @@
                 </form>
                 <ul class="space-y-2">
                     <li>
-                        <a
-                            href="#"
+                        <Link
+                            href="/admin/dashboard"
                             class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -57,7 +61,7 @@
                                 ></path>
                             </svg>
                             <span class="ml-3">Dashbaord</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <button
@@ -99,24 +103,24 @@
                         </button>
                         <ul id="dropdown-pages" class="hidden py-2 space-y-2">
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/admin/product"
                                     class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                                    >Products</a
+                                    >Products</Link
                                 >
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/brand"
                                     class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                                    >Brands</a
+                                    >Brands</Link
                                 >
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    href="/category"
                                     class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                                    >Categories</a
+                                    >Categories</Link
                                 >
                             </li>
                         </ul>
@@ -159,7 +163,7 @@
                                 ></path>
                             </svg>
                         </button>
-                        <!-- <ul id="dropdown-sales" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-sales" class="hidden py-2 space-y-2">
                             <li>
                                 <a
                                     href="#"
@@ -181,7 +185,7 @@
                                     >Invoice</a
                                 >
                             </li>
-                        </ul> -->
+                        </ul>
                     </li>
                 </ul>
               
@@ -276,7 +280,7 @@
                         </g>
                     </svg>
                 </button>
-                <!-- Dropdown
+                <!-- Dropdown -->
                 <div
                     class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
                     id="language-dropdown"
@@ -451,7 +455,7 @@
                             </a>
                         </li>
                     </ul>
-                </div> -->
+                </div>
             </div>
      </aside>
 </template>
