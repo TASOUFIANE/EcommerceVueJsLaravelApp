@@ -1,23 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
-use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-class ProductController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $products = Product::paginate(15);
-
-        return Inertia::render('Admin/Products/Index', [
-            'products' => $products
-        ]);
+        //
     }
 
     /**
@@ -39,7 +35,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Brand $brand)
     {
         //
     }
@@ -47,7 +43,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -55,7 +51,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Brand $brand)
     {
         //
     }
@@ -63,7 +59,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Brand $brand)
     {
         //
     }
