@@ -12,7 +12,8 @@ onMounted(() => {
 })
 defineProps({ 
     products: Object,
-    count:Number
+    count:Number,
+    filter:Object,
 })
 </script>
 <template>
@@ -37,7 +38,7 @@ defineProps({
                 </Breadcrumb>
                 <!-- Start coding here -->
                 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">                  
-                    <ProductList :products = products></ProductList>
+                    <ProductList :products = products :filter=filter></ProductList>
                  
                     <Pagination :links="products.links" :count="count"></Pagination>
                 </div>

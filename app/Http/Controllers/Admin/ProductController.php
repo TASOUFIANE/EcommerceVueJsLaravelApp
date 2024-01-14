@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -11,14 +11,21 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
-        $products = Product::with('category','brand')->paginate(15);
-        $count = Product::count();
+    public function index()
+    {   
+        
+        $products = Product::query()->when(Request::input('search'),function($query,$search){
+                        $query->where('title','like',"%".$search."%");
+                    })->with('category','brand')->paginate(10)->withQueryString();
+
+        $count = $products->count();
+       
+        $filter = Request::only(['search']);
         
         return Inertia::render('Admin/Products/Index', [
             'products' => $products,
-            'count' => $count
+            'count' => $count,
+            'filter' => $filter
         ]);
     }
 
