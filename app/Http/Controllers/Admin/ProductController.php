@@ -13,10 +13,12 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::paginate(15);
-
+        $products = Product::with('category','brand')->paginate(15);
+        $count = Product::count();
+        
         return Inertia::render('Admin/Products/Index', [
-            'products' => $products
+            'products' => $products,
+            'count' => $count
         ]);
     }
 
