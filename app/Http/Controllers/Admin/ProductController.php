@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\{Product,ProductImage};
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -19,7 +19,7 @@ class ProductController extends Controller
                     })->with('category','brand')->paginate(10)->withQueryString();
 
         $count = $products->count();
-       
+        
         $filter = Request::only(['search']);
         
         return Inertia::render('Admin/Products/Index', [
@@ -42,7 +42,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::create([
+            'title' => $request->title,
+            'quantity'=>$request->quantity,
+            'description'=>$request->desc,
+            'price'=>$request->price,
+            'published'=>$request->published,
+            'inStock' =>$request->stock,
+            'created_by' =>$request->auth()->user()->id,
+            'brand_id' => $request->brand,
+            'category_id' =>$request->brand,
+        ]);
+
+        if($request->hasFile('images'))
+        {
+            $images = $request->file('images');
+            foreach($images as $img){
+
+            }
+        }
+
+        
     }
 
     /**

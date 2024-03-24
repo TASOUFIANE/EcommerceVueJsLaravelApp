@@ -15,10 +15,15 @@ defineProps({
     count:Number,
     filter:Object,
 })
+
+
+</script>
+<script>
+    export default { layout: Master }
 </script>
 <template>
-    <Master>
-        <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+    
+    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
             <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
                 <Breadcrumb>
                     <li>
@@ -43,6 +48,8 @@ defineProps({
                     <Pagination :links="products.links" :count="count"></Pagination>
                 </div>
             </div>
-        </section>
-    </Master>
+    </section>
+    
+
+    
 </template>

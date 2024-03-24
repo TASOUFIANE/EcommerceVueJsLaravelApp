@@ -7,9 +7,11 @@ onMounted(() => {
     initFlowbite();
 })
 </script>
-
+<script>
+    export default { layout: Master }
+</script>
 <template>
-    <Master>
+    
             <div
                 class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4"
             >
@@ -60,5 +62,5 @@ onMounted(() => {
                     class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
                 ></div>
             </div>
-    </Master>
+    
 </template>

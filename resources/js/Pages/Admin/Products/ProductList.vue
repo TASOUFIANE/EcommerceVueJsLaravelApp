@@ -1,16 +1,19 @@
 <script setup>
-import { onMounted } from 'vue';
-import { ref,watch } from 'vue';
-import { initFlowbite } from 'flowbite';
-import { router } from '@inertiajs/vue3';
+import { onMounted } from 'vue'
+import { ref,watch } from 'vue'
+import { initFlowbite } from 'flowbite'
+import { router } from '@inertiajs/vue3'
+import AddModal  from './AddModal.vue'
 onMounted(() => {
     initFlowbite();
 })
 let props = defineProps({ products: Object,filter:Object});
 let search = ref(props.filter.search);
+let show = ref(false);
 watch(search, (value) => {
     router.get('/admin/product/',{search:value},{preserveState:true,replace:true})
 })
+
 </script>
 <template>
     <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -34,7 +37,7 @@ watch(search, (value) => {
         </div>
         <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-            <button type="button"
+            <button type="button" data-modal-target="crud-modal" data-modal-toggle="crud-modal" 
                 class="flex items-center justify-center text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true">
@@ -142,7 +145,7 @@ watch(search, (value) => {
                     <th scope="col" class="px-4 py-3">Description</th>
                     <th scope="col" class="px-4 py-3">Price</th>
                     <th scope="col" class="px-4 py-3">
-                        <span class="sr-only">Actions</span>
+                        Actions
                     </th>
                 </tr>
             </thead>
@@ -198,4 +201,5 @@ watch(search, (value) => {
             </tbody>
         </table>
     </div>
+    <add-modal></add-modal>
 </template>
